@@ -1,4 +1,5 @@
 const { sqlForPartialUpdate } = require('./sql');
+const { BadRequestError } = require('../expressError');
 
 describe('sqlForPartialUpdate', () => {
   test('Generates correct SQL for single field update', function () {
