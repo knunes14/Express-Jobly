@@ -59,7 +59,7 @@ describe("create", function () {
 /************************************** findAll */
 
 describe("findAll", function () {
-  test("works: no filter", async function () {
+  test("works: all", async function () {
     let companies = await Company.findAll();
     expect(companies).toEqual([
       {
@@ -107,7 +107,7 @@ describe("findAll", function () {
   });
 
   test("works: by maxEmployees", async function () {
-    let companies = await Company.findAll({ maxEmployees: 3 });
+    let companies = await Company.findAll({ maxEmployees: 2 });
     expect(companies).toEqual([
       {
         handle: "c1",
@@ -159,7 +159,7 @@ describe("findAll", function () {
 
   test("bad request if invalid min > max", async function () {
     try {
-      await Company.findAll({ minEmployees: 2, maxEmployees: 1 });
+      await Company.findAll({ minEmployees: 10, maxEmployees: 1 });
       fail();
     } catch (err) {
       expect(err instanceof BadRequestError).toBeTruthy();
